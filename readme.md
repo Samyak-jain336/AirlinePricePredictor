@@ -17,11 +17,8 @@ The initial dataset contained a mix of numerical, categorical, and time-related 
 3.  **Route Encoding:** The categorical airport codes (`startingAirport` and `destinationAirport`) were converted into numerical features using **One-Hot Encoding**.
 4.  **Binary Feature Conversion:** Boolean columns (`isBasicEconomy`, `isRefundable`, `isNonStop`) were converted to integers (`0` or `1`).
 5.  **Missing Value Imputation:** Missing values in the **`totalTravelDistance`** column were imputed using a computed ratio of average travel distance to total fare from non-missing samples ($\frac{\text{totalTravelDistance}}{\text{totalFare}}$).
-6.  **Advanced Feature Engineering (Second Experiment):** Two additional features were created for a second model experiment to try and improve performance:
-    * **`FlightEfficiency`**: $\frac{\text{totalTravelDistance}}{\text{duration\_minutes}}$
-    * **`duration_per_stop`**: $\frac{\text{duration\_minutes}}{\text{Num\_of\_Stops} + 1}$
-7.  **Feature Selection:** The `baseFare` column, which is highly correlated with the target `totalFare` and would make the prediction trivial, was intentionally dropped from the feature set. The `totalFare` column itself was also dropped to form the feature matrix $X$.
-8.  **Target Transformation:** Both the feature matrix ($X$) and the target variable ($y$) were log-transformed using `np.log1p` to stabilize variance and make the distribution more Gaussian-like, which often improves regression model performance.
+6.  **Feature Selection:** The `baseFare` column, which is highly correlated with the target `totalFare` and would make the prediction trivial, was intentionally dropped from the feature set. The `totalFare` column itself was also dropped to form the feature matrix $X$.
+7.  **Target Transformation:** Both the feature matrix ($X$) and the target variable ($y$) were log-transformed using `np.log1p` to stabilize variance and make the distribution more Gaussian-like, which often improves regression model performance.
 
 ## Model Training and Hyperparameter Tuning
 
